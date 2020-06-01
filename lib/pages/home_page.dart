@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // 首页接口地址： https://www.devio.org/io/flutter_app/json/home_page.json
 
   List _imageUrls = [
     'https://pic5.40017.cn/i/ori/Q6W9bIdTZC.jpg',
