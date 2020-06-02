@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/model/common_model.dart';
@@ -37,7 +35,7 @@ class LocalNav extends StatelessWidget {
 
     return Row(
       children: items,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
   }
 
@@ -45,7 +43,7 @@ class LocalNav extends StatelessWidget {
     // GestureDetector 点击事件
     return GestureDetector(
       onTap: () {
-
+        print('点击了....');
       },
       child: Column(
         children: <Widget>[
