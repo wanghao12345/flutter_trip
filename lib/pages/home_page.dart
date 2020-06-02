@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_trip/dao/home_dao.dart';
+import 'package:flutter_trip/model/common_model.dart';
 import 'package:flutter_trip/model/home_model.dart';
 import 'package:flutter_trip/widget/grid_nav.dart';
+import 'package:flutter_trip/widget/local_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
 
@@ -23,7 +25,8 @@ class _HomePageState extends State<HomePage> {
   // 透明度
   double appBarAlpha = 0;
   // 请求结果
-  String resultString = "";
+  List<CommonModel> localNavList = [];
+
   // 初始化页面
   @override
   void initState() {
@@ -49,12 +52,10 @@ class _HomePageState extends State<HomePage> {
     try {
       HomeModel model = await HomeDao.fetch();
       setState(() {
-        resultString = json.encode(model.config);
+        localNavList = model.localNavList;
       });
     } catch (e) {
-      setState(() {
-        resultString = json.encode(e.toString());
-      });
+      print(e);
     }
   }
 
@@ -94,11 +95,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   // 首页导航
+                  LocalNav(localNavList: localNavList),
                   GridNav(gridNavModel: null, name: '小汪'),
+                
                   // 占位
                   Container(
                     height: 800,
-                    child: ListTile(title: Text(resultString)),
+                    child: ListTile(title: Text("")),
                   )
                 ],
               ),
