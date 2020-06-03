@@ -112,7 +112,7 @@ class _WebView extends State<WebView> {
     return Container(
       // 充满整个组件
       child: FractionallySizedBox(
-        widthFactor: 1,
+        widthFactor: 1, // 宽度撑满
         child: Stack(
           children: <Widget>[
             // 左侧操作按钮
@@ -126,8 +126,19 @@ class _WebView extends State<WebView> {
                 ),
               ),
             ),
-
-
+            Positioned(
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Text(
+                  widget.title??'',
+                  style: TextStyle(
+                    color: backButtonColor,
+                    fontSize: 20
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
